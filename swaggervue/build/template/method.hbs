@@ -1,0 +1,24 @@
+
+/**
+* {{&summary}}
+* request: {{&methodName}}
+{{#parameters}}
+{{^isSingleton}} * @param {{&camelCaseName}} - {{&description}}{{/isSingleton}}
+{{/parameters}}
+*/
+export const {{&methodName}} = function(parameters) {
+    {{#compares method}}
+    return apiRequest({
+        url: domain + '{{&path}}',
+        method: '{{toLowerCase method}}',
+        params: parameters
+    });
+    {{else}}
+    return apiRequest({
+        url: domain + '{{&path}}',
+        method: '{{toLowerCase method}}',
+        data: parameters
+    });
+     {{/compares}}  
+}
+
